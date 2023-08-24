@@ -7,7 +7,7 @@ root.title('Quantum Glasses')
 
 #set icon
 root.iconbitmap(default='logo.ico')
-root.geometry('399x410')
+root.geometry('399x425')
 root.resizable(0,0) #blocking the resizing feature
 
 #defining the colours and font
@@ -32,16 +32,16 @@ x_gate = tkinter.Button(button_frame, font=button_font, bg=buttons, text='X')
 y_gate = tkinter.Button(button_frame, font=button_font, bg=buttons, text='Y')
 z_gate = tkinter.Button(button_frame, font=button_font, bg=buttons, text='Z')
 x_gate.grid(row=0,column=0,ipadx=45, pady=1)
-y_gate.grid(row=0,column=1,ipadx=45, pady=1)
-z_gate.grid(row=0,column=1,ipadx=53, pady=1)
+y_gate.grid(row=0,column=1,ipadx=45, pady=1,sticky='WE')
+z_gate.grid(row=0,column=2,ipadx=53, pady=1, sticky='E')
 
 #define second row of buttons
 Rx_gate = tkinter.Button(button_frame, font=button_font, bg=buttons, text='RX')
 Ry_gate = tkinter.Button(button_frame, font=button_font, bg=buttons, text='RY')
 Rz_gate = tkinter.Button(button_frame, font=button_font, bg=buttons, text='RZ')
-Rx_gate.grid(row=1,column=1,columnspan=1, sticky='WE',pady=1)
-Ry_gate.grid(row=1,column=2,columnspan=1, sticky='WE',pady=1)
-Rz_gate.grid(row=1,column=3,columnspan=1, sticky='WE',pady=1)
+Rx_gate.grid(row=1,column=0,columnspan=1, sticky='WE',pady=1)
+Ry_gate.grid(row=1,column=1,columnspan=1, sticky='WE',pady=1)
+Rz_gate.grid(row=1,column=2,columnspan=1, sticky='WE',pady=1)
 
 #define thrid row of buttons
 s_gate = tkinter.Button(button_frame, font=button_font, bg=buttons, text='S')
