@@ -1,5 +1,6 @@
 import tkinter
-import qiskit
+from qiskit import QuantumCircuit
+from tkinter import LEFT, END, DISABLED
 
 #define window
 root = tkinter.Tk()
@@ -16,6 +17,94 @@ buttons='#834558'
 special_buttons='#bc3454'
 button_font=('Arial',18)
 display_font=('Arial',32)
+
+# Initialize the Quantum Circuit
+def initialize_circuit():
+    global circuit
+    circuit = QuantumCircuit(1)
+
+initialize_circuit()
+theta = 0
+
+#define function for gates
+
+def display_gate(gate_input):
+    """
+    Adds a corresponding gate notation in the display to track the operations.
+    if the number of operation reach ten, all gate buttons are disabled.
+    """
+
+    #insert the defined gate
+    display.insert(END,gate_input)
+
+    #check if the number of operation has reached ten, if yes,
+    #disable all the gate buttons
+    input_gates = display.get()
+    num_gates_pressed = len(input_gates)
+    list_input_gates = list(input_gates)
+    search_word = ["R","D"]
+    count_double_valued_gates = [list_input_gates.count(i) for i in search_word]
+    num_gates_pressed-=sum(count_double_valued_gates)
+    if num_gates_pressed==10:
+        gates = [x_gate, y_gate, z_gate, Rx_gate, Ry_gate, Rz_gate, s_gate, sd_gate, t_gate, td_gate, hardmard]
+        for gate in gates:
+            gate.config(state=DISABLED)
+
+#define Function for about button
+def about():
+    """
+    Display the info about the project!
+    """
+
+    info = tkinter.Tk()
+    info.title('About')
+    info.geometry('650x470')
+    info.resizable(0,0)
+
+    text = tkinter.Text(info, height=20, width=20)
+
+    #create label
+    label = tkinter.Label(info, text= "About quantum glasses:")
+    label.config(font=("Arial", 14))
+
+    text_to_display = """
+    About: Visualization tool for single Qubit Rotation on Bloch Sphere
+
+    Created by : G-31
+    Created by using Python, Tkinter, Qiskit
+
+    Info about the gate buttons and corresponding qiskit commands:
+
+    X = flips the state of qubit -
+    Y = rotates the state vector about Y-axis -
+    Z = flips the phase by PI radians - 
+    Rx = parameterized rotation about the X axis -
+    Ry = parameterized rotation about the Y axis -
+    Rz = parameterized rotation about the Z axis -
+    S = rotates the state vector about Z axis by PI/2 radians -
+    T = rotates the state vector about Z axis by PI/4 radians -
+    Sd = rotates the state vector about Z axis by PI/2 radians -
+    Td = rotates the state vector about Z axis by PI/4 radians -
+    H = creates the state of superposition -
+
+    For Rx, Ry, and Rz
+    theta(rotation_angle) allowed range in the app is [-2*PI,2*PI]
+
+    In case of a Visualization Error, the app closes automatically.
+    This indicates that visualization of your circuit is not possible.
+
+    At a time, only ten operations can be visualized.
+    """
+
+    label.pack()
+    text.pack(fill='both',expand=True)
+
+#Insert the text
+    text.insert(END, text_to_display)
+
+#run
+    info.mainloop()
+
 
 #define frame
 display_frame = tkinter.LabelFrame(root)
@@ -68,7 +157,7 @@ clear_button = tkinter.Button(button_frame, font=button_font, bg=special_buttons
 clear_button.grid(row=5, column=0, columnspan=3, sticky='WE')
 
 #define the about button
-about_button = tkinter.Button(button_frame, font=button_font, bg=special_buttons, text='About')
+about_button = tkinter.Button(button_frame, font=button_font, bg=special_buttons, text='About', command=about)
 about_button.grid(row=6,column=0,columnspan=3,sticky='WE')
 
 #run the main
