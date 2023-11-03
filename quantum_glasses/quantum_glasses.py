@@ -238,31 +238,31 @@ class QuantumGlasses:
             x_gate = tkinter.Button(button_frame, font=button_font, bg=buttons, text='X',command=lambda:[display_gate('x'),circuit.x(0)])
             y_gate = tkinter.Button(button_frame, font=button_font, bg=buttons, text='Y',command=lambda:[display_gate('y'),circuit.y(0)])
             z_gate = tkinter.Button(button_frame, font=button_font, bg=buttons, text='Z',command=lambda:[display_gate('z'),circuit.z(0)])
-            x_gate.grid(row=0,column=0,ipadx=45, pady=1)
-            y_gate.grid(row=0,column=1,ipadx=45, pady=1)
-            z_gate.grid(row=0,column=2,ipadx=53, pady=1, sticky='E')
+            x_gate.grid(row=0,column=0,ipadx=150, ipady=50,pady=1)
+            y_gate.grid(row=0,column=1,ipadx=150, ipady=50,pady=1)
+            z_gate.grid(row=0,column=2,ipadx=150, ipady=50,pady=1, sticky='E')
 
             # Define the second row of buttons
             Rx_gate = tkinter.Button(button_frame, font=button_font, bg=buttons, text='RX',command=lambda:[display_gate('Rx'),self.user_input(circuit,'x')])
             Ry_gate = tkinter.Button(button_frame, font=button_font, bg=buttons, text='RY',command=lambda:[display_gate('Ry'),self.user_input(circuit,'y')])
             Rz_gate = tkinter.Button(button_frame, font=button_font, bg=buttons, text='RZ',command=lambda:[display_gate('Rz'),self.user_input(circuit,'z')])
-            Rx_gate.grid(row=1,column=0,columnspan=1,sticky='WE', pady=1)
-            Ry_gate.grid(row=1,column=1,columnspan=1,sticky='WE', pady=1)
-            Rz_gate.grid(row=1,column=2,columnspan=1,sticky='WE', pady=1)
+            Rx_gate.grid(row=1,column=0,columnspan=1,sticky='WE',ipadx=100, ipady=50, pady=1)
+            Ry_gate.grid(row=1,column=1,columnspan=1,sticky='WE',ipadx=100, ipady=50, pady=1)
+            Rz_gate.grid(row=1,column=2,columnspan=1,sticky='WE',ipadx=100, ipady=50, pady=1)
 
             # Define the third row of buttons
             s_gate = tkinter.Button(button_frame, font=button_font, bg=buttons, text='S',command=lambda:[display_gate('s'),circuit.s(0)])
             sd_gate = tkinter.Button(button_frame, font=button_font, bg=buttons, text='SD',command=lambda:[display_gate('SD'),circuit.sdg(0)])
             hadamard = tkinter.Button(button_frame, font=button_font, bg=buttons, text='H',command=lambda:[display_gate('H'),circuit.h(0)])
-            s_gate.grid(row=2,column=0,columnspan=1,sticky='WE', pady=1)
-            sd_gate.grid(row=2,column=1,sticky='WE', pady=1)
+            s_gate.grid(row=2,column=0,columnspan=1,sticky='WE',ipadx=100, ipady=50, pady=1)
+            sd_gate.grid(row=2,column=1,sticky='WE',ipadx=100, ipady=50, pady=1)
             hadamard.grid(row=2, column=2, rowspan=2,sticky='WENS', pady=1)
 
             # Define the fifth row of buttons
             t_gate = tkinter.Button(button_frame, font=button_font, bg=buttons, text='T', command=lambda:[display_gate('t'),circuit.t(0)])
             td_gate = tkinter.Button(button_frame, font=button_font, bg=buttons, text='TD',command=lambda:[display_gate('TD'),circuit.tdg(0)])
-            t_gate.grid(row=3,column=0,sticky='WE', pady=1)
-            td_gate.grid(row=3,column=1,sticky='WE', pady=1)
+            t_gate.grid(row=3,column=0,sticky='WE',ipadx=80, ipady=50, pady=1)
+            td_gate.grid(row=3,column=1,sticky='WE',ipadx=80, ipady=50, pady=1)
 
             def clear(circuit):
                 """
